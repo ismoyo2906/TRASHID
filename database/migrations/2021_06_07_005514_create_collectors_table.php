@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrashesTable extends Migration
+class CreateCollectorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateTrashesTable extends Migration
      */
     public function up()
     {
-        Schema::create('trashes', function (Blueprint $table) {
+        Schema::create('collectors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('trash_name');
-            $table->string('trash_price');
-            $table->bigInteger('amount')->nullable();
+            $table->string('no_rek')->unique();
+            $table->string('collector_name');
+            $table->string('company_name');
+            $table->string('address_name');
+            $table->string('phone',13);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateTrashesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trashes');
+        Schema::dropIfExists('collectors');
     }
 }

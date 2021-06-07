@@ -9,7 +9,7 @@
 
             <li class="menu-header">Starter</li>
             <li><a class="nav-link" href="#"><i class="far fa-user"></i> <span>Nasabah</span></a></li>
-            <li><a class="nav-link" href="#"><i class="far fa-file-alt"></i> <span>Sampah</span></a></li>
+            <li><a class="nav-link" href="{{ route('trash.index') }}"><i class="far fa-file-alt"></i> <span>Sampah</span></a></li>
             <li><a class="nav-link" href="#"><i class="fas fa-bicycle"></i> <span>Pengepul</span></a></li>
 
             <li class="nav-item dropdown">

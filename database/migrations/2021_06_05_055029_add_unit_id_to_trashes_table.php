@@ -14,8 +14,8 @@ class AddUnitIdToTrashesTable extends Migration
     public function up()
     {
         Schema::table('trashes', function (Blueprint $table) {
-            $table->unsignedBigInteger('unit_id')->after('amount');
-            $table->foreign('unit_id')->references('id')->on('trashes');
+            $table->unsignedBigInteger('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units');
         });
     }
 
