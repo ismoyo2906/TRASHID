@@ -30,3 +30,14 @@ Route::group([
     Route::put('/{id}' , 'TrashController@update')->name('trash.update'); 
     Route::get('/{id}' , 'TrashController@destroy')->name('trash.destroy'); 
 });
+
+Route::group([
+    'prefix' => 'collector'
+], function(){
+    Route::get('/create' , 'CollectorController@create')->name('collector.create'); 
+    Route::post('/' , 'CollectorController@store')->name('collector.store'); 
+    Route::get('/' , 'CollectorController@index')->name('collector.index'); 
+    Route::get('/{id}/edit' , 'CollectorController@edit')->name('collector.edit'); 
+    Route::put('/{id}' , 'CollectorController@update')->name('collector.update'); 
+    Route::get('/{id}' , 'CollectorController@destroy')->name('collector.destroy'); 
+});

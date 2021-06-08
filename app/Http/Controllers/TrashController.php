@@ -118,7 +118,7 @@ class TrashController extends Controller
         $trash = Trash::find($id);
         $trash->delete();
 
-        Alert::success('Berhasil', 'Mneghapus Data');
+        Alert::success('Berhasil', 'Menghapus Data');
         return redirect()->back();
     }
 }

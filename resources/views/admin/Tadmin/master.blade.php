@@ -76,7 +76,7 @@
     <script src="{{ asset('assets/js/scripts.js')}}"></script>
     <script src="{{ asset('assets/js/custom.js')}}"></script>
     
-    @include('sweetalert::alert')
+   
     @stack('script')
     <!-- Page Specific JS File -->
 </body>

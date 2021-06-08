@@ -18,7 +18,7 @@ class CreateCollectorsTable extends Migration
             $table->string('no_rek')->unique();
             $table->string('collector_name');
             $table->string('company_name');
-            $table->string('address_name');
+            $table->string('address');
             $table->string('phone',13);
             $table->timestamps();
         });

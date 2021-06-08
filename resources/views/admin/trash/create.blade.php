@@ -1,6 +1,6 @@
 @extends('admin.Tadmin.master')
 
-@section('tittle', 'Buat Data Sampah')
+@section('tittle', 'Buat Data')
 
 @section('content')
 <form role="form" action="{{ route('trash.store') }}" method="post" enctype="multipart/form-data">
