@@ -44,3 +44,6 @@
     </div>
 </form>
 @endsection
+@push('script')
+  @include('sweetalert::alert')
+@endpush

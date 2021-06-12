@@ -1,27 +1,21 @@
 @extends('admin.Tadmin.master')
 
 @section('tittle', 'Data Pengepul')
+@push('stylesheet')
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css')}}">
+@endpush
 
 @section('content')
 <div class="col-12 col-md-6 col-lg-12">
     <div class="card">
 
-        <div class="row">
-            <form action="#" method="GET" class="form-inline mr-auto ml-5">
-                <div class="search-element mt-3">
-                    <input class="form-control" type="text" name="keyword" value="{{ old('keyword')}}"
-                        placeholder="Search name" aria-label="Search" data-width="250">
-                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                    <div class="search-backdrop"></div>
-                </div>
-            </form>
-
-            <a href="{{ route('collector.create') }}" class="btn btn-primary mr-5 mt-3">Tambah</a>
-        </div>
+     <div class="tambah">
+         <a href="{{ route('collector.create') }}" class="btn btn-success">Tambah data</a>
+     </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-md">
-                    <tbody>
+                <table class="table table-bordered table-md" id="datatable">
+                   <thead>
                         <tr>
                             <th>Nomor Rek</th>
                             <th>Nama Pengepul</th>
@@ -30,7 +24,8 @@
                             <th>Telepon</th>
                             <th>Action</th>
                         </tr>
-
+                    </thead>
+                    <tbody>
                         @forelse ($collectors as $collector)
                         <tr>
                             <td>{{ $collector->no_rek }}</td>
@@ -54,29 +49,17 @@
                 </table>
             </div>
         </div>
-
-        <div class="card-footer text-right">
-            <nav class="d-inline-block">
-                <ul class="pagination mb-0">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1 <span
-                                class="sr-only">(current)</span></a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
     </div>
 </div>
 @endsection
 
 @push('script')
   @include('sweetalert::alert')
+  <script>
+       $(document).ready(function(){
+        
+        $('#datatable').DataTable();
+
+      });
+  </script>
 @endpush

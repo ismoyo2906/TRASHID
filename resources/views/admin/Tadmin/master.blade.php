@@ -16,6 +16,9 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/datatables.min.css')}}">
+    @stack('stylesheet')
+
 </head>
 <body>
     <div id="app">
@@ -30,7 +33,6 @@
             @include('admin.Tadmin.partial.sidbar')
             {{-- end Sidbar --}}
 
-
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
@@ -44,7 +46,6 @@
                     </div>
                 </section>
             </div>
-
 
             <footer class="main-footer">
                 <div class="footer-left">
@@ -75,8 +76,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js')}}"></script>
     <script src="{{ asset('assets/js/custom.js')}}"></script>
-    
-   
+    <script src="{{ asset('assets/datatables.min.js')}}"></script>
     @stack('script')
     <!-- Page Specific JS File -->
 </body>

@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label for="phone">Telpone</label>
-                <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone')}}">
+                <input type="number" class="form-control" name="phone" id="phone" value="{{ old('phone')}}">
                 @error('phone')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

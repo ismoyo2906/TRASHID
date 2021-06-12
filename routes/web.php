@@ -41,3 +41,12 @@ Route::group([
     Route::put('/{id}' , 'CollectorController@update')->name('collector.update'); 
     Route::get('/{id}' , 'CollectorController@destroy')->name('collector.destroy'); 
 });
+
+Route::group([
+    'prefix' => 'sell'
+], function(){
+    Route::get('/inputnorek' , 'SellController@inputnorek')->name('sell.inputnorek'); 
+    Route::get('/ceknorek' , 'SellController@ceknorek')->name('sell.ceknorek'); 
+    Route::post('/{id}' , 'SellController@store')->name('sell.store'); 
+    Route::get('/' , 'SellController@index')->name('sell.index');
+});

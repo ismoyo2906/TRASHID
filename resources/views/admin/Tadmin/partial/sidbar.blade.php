@@ -17,7 +17,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link beep beep-sidebar" href="#">Beli Sampah</a></li>
                     <li><a class="nav-link beep beep-sidebar" href="#">Tarik Saldo</a></li>
-                    <li><a class="nav-link beep beep-sidebar" href="#">Jual Pengepul</a></li>
+                    <li><a class="nav-link beep beep-sidebar" href="{{ Route('sell.index')}}">Jual Pengepul</a></li>
                 </ul>
             </li>
         </ul>

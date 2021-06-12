@@ -40,10 +40,10 @@ class CollectorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'collector_name' => ['required'],
-            'company_name' => ['required'],
-            'address' => ['required'],
-            'phone' => ['required', 'numeric', 'unique:collectors,phone'],
+            'collector_name' => 'required',
+            'company_name' => 'required',
+            'address' => 'required',
+            'phone' => 'required|min:9|max:13|unique:collectors,phone'
         ]);
 
         $random = rand(4, 9999);

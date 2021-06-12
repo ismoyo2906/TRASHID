@@ -11,4 +11,6 @@ class Unit extends Model
     public function trashes(){
         return $this->hasMany('App\Trash','unit_id');
     }
+
+    
 }
