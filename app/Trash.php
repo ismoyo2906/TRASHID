@@ -16,4 +16,8 @@ class Trash extends Model
         return $this->belongsToMany('App\Collector', 'sells', 'trash_id', 'collector_id');
     }
 
+    protected function users(){
+        return $this->belongsToMany('App\User', 'transactions', 'trash_id', 'user_id');
+    }
+    
 }

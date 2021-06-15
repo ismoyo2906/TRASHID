@@ -30,7 +30,7 @@
                             <td>{{ $trash->trash_name }}</td>
                             <td>Rp. {{ number_format($trash->trash_price)}}</td>
                             <td>{{ $trash->unit->unit_name }}</td>
-                            <td>{{ number_format($trash->amount) }}</td>
+                            <td>{{ number_format($trash->amount,1) }} {{$trash->unit->unit_name}}</td>
                             <td>
                                 <a href="{{ route('trash.edit', $trash->id) }}" class="btn btn-secondary">Edit</a>
                                 <a href="{{ route('trash.destroy', $trash->id)}}" data-id="$trash->id"
