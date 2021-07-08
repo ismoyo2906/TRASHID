@@ -17,11 +17,13 @@ class CreateSellsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('trash_id');
             $table->unsignedBigInteger('collector_id');
+            $table->unsignedBigInteger('admin_id');
             $table->bigInteger('total_price');
             $table->bigInteger('amount_sell');
 
             $table->foreign('trash_id')->references('id')->on('trashes');
             $table->foreign('collector_id')->references('id')->on('collectors');
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamp('date_sells')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

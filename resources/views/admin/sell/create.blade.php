@@ -22,7 +22,7 @@
                       @forelse ($trashes as $trash)
                       @if ($trash->amount>0)
                       <option value="{{ $trash->id}}">{{ $trash->trash_name}}
-                      (Rp. {{number_format($trash->trash_price)}})</option>
+                      (Rp. {{number_format($trash->trash_price)}}) - {{$trash->amount}}</option>
                       @endif
                       @empty
 

@@ -23,7 +23,17 @@ Route::get('/layouts', function () {
 });
 
 Route::group([
-    'prefix' => 'trash'
+    'prefix' => 'dashboard',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
+], function(){
+    Route::get('/' , 'DashboardController@index')->name('dashboard.index');
+    Route::get('/logout' , 'DashboardController@logout')->name('dashboard.logout');
+});
+
+
+Route::group([
+    'prefix' => 'trash',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
     Route::get('/create' , 'TrashController@create')->name('trash.create'); 
     Route::post('/' , 'TrashController@store')->name('trash.store'); 
@@ -34,7 +44,8 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'collector'
+    'prefix' => 'collector',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
     Route::get('/create' , 'CollectorController@create')->name('collector.create'); 
     Route::post('/' , 'CollectorController@store')->name('collector.store'); 
@@ -45,7 +56,8 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'sell'
+    'prefix' => 'sell',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
     Route::get('/inputnorek' , 'SellController@inputnorek')->name('sell.inputnorek'); 
     Route::get('/ceknorek' , 'SellController@ceknorek')->name('sell.ceknorek'); 
@@ -54,7 +66,8 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'user'
+    'prefix' => 'user',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
     Route::get('/' , 'UserController@index')->name('user.index');
     Route::get('/{id}/show' , 'UserController@show')->name('user.show');
@@ -64,7 +77,9 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'transaction'
+    'prefix' => 'transaction',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
+    
 ], function(){
     Route::get('/inputnorek' , 'TransactionController@inputnorek')->name('transaction.inputnorek');
     Route::get('/ceknorek' , 'TransactionController@ceknorek')->name('transaction.ceknorek');
@@ -77,7 +92,8 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'pull'
+    'prefix' => 'pull',
+    'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
     Route::get('/inputnorek' , 'PullController@inputnorek')->name('pull.inputnorek');
     Route::get('/ceknorek' , 'PullController@ceknorek')->name('pull.ceknorek');
@@ -86,7 +102,27 @@ Route::group([
 });
 
 Auth::routes();
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['auth:admin', 'ceklevel:admin']
+], function(){
+    Route::get('/index' , 'AdminController@index')->name('admin.index');
+    Route::get('/create' , 'AdminController@create')->name('admin.create');
+    Route::post('/register' , 'AdminController@register')->name('admin.register');
+    Route::get('/{id}/edit' , 'AdminController@edit')->name('admin.edit');
+    Route::put('/{id}' , 'AdminController@update')->name('admin.update');
+});
 
-Route::group(['middleware' => ['auth', 'isUser']], function(){
+
+/**
+ * this is the code for the users
+ */
+Route::group(['middleware' => ['auth:web', 'isUser']], function(){
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/inputnorek', 'HomeController@inputnorek')->name('user.inputnorek');
+    Route::get('/ceknorek', 'HomeController@ceknorek')->name('user.ceknorek');
+    Route::post('/user/{id}', 'HomeController@store')->name('user.store');
+
+    Route::get('/infortarik', 'HomeController@infortarik')->name('user.infortarik');
+    Route::get('/riwayatTransaction', 'HomeController@riwayatTransaction')->name('user.riwayatTransaction');
 });

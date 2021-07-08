@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Collector;
 use App\Sell;
 use App\Trash;
-use App\Unit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 
@@ -49,10 +49,13 @@ class SellController extends Controller
         ]);
 
         $trash = Trash::where('id', $request->trash_id)->first();
+        $admin = Auth::guard('admin')->user()->id;
         $collector = Collector::find($id);
+        
         $sell = new Sell;
         $sell->trash_id = $request->trash_id;
         $sell->collector_id = $collector->id;
+        $sell->admin_id = $admin;
         $sell->amount_sell = $request->amount_sell;
         $sell->total_price = $request->amount_sell*$trash->trash_price;
         if($trash){

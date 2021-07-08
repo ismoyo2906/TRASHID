@@ -17,6 +17,7 @@ class Pull extends Model
     public function allData(){
         return DB::table('pulls')
         ->join('users', 'users.id', '=', 'pulls.user_id')
+        ->join('admins', 'admins.id', '=', 'pulls.admin_id')
         ->get();
     }
 

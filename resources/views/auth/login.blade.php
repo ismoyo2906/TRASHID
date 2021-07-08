@@ -6,6 +6,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
+                 @if(session('failed'))
+                    <div class="alert alert-danger alert-has-icon" role="alert">
+                        <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                        <div class="alert-body">
+                            <div class="alert-title">{{ session('failed')}}</div>
+                            jika akun sudah dapat digunakan
+                        </div>
+                    </div>
+                 @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -71,3 +80,11 @@
     </div>
 </div>
 @endsection
+<script>
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+      });
+    }, 1500);
+</script>
+

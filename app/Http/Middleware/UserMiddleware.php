@@ -24,11 +24,11 @@ class UserMiddleware
                 $message = 'Akun anda akan segera dapat digunakan ketika mendapatkan email dari kami';
             }
             return redirect()->route('login')
+                ->with('failed', 'Kami akan menghubungi')
                 ->with('status', $message)
                 ->withErrors(['email' => 'Akun anda akan segera dapat digunakan ketika mendapatkan email dari kami']);
         }
 
-        // abort(404);
         return $next($request);
     }
 }

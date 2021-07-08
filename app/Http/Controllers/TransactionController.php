@@ -51,9 +51,12 @@ class TransactionController extends Controller
     
         $user = User::find($id);
         $trash = Trash::where('id', $request->trash_id)->first();
+        $admin = Auth::guard('admin')->user()->id;
+
         $transaction = new Transaction;
         $transaction->user_id = $id;
         $transaction->trash_id = $request->trash_id;
+        $transaction->admin_id = $admin;
         $transaction->amount_transaction = $request->amount_transaction;
         $transaction->total_price = $request->amount_transaction*$trash->trash_price;
         if($user){

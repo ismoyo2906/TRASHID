@@ -31,7 +31,7 @@
                             <td>{{$pull->no_rek }}</td>
                             <td>{{ number_format($pull->amount_pull)}} </td>
                             <td>{{$pull->date_pull }} </td>
-                            <td>-</td>
+                            <td>{{$pull->nameLevel }} </td>
                         </tr>
                     @empty
                     <tr>

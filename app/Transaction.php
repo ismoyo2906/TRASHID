@@ -19,7 +19,15 @@ class Transaction extends Model
         return DB::table('transactions')
                 ->join('trashes', 'trashes.id', '=', 'transactions.trash_id')
                 ->join('users', 'users.id', '=', 'transactions.user_id')
+                ->join('admins', 'admins.id', '=', 'transactions.admin_id')
                 ->get();
     }
 
+    public function trash(){
+        return $this->belongsTo('App\Trash');
+    }
+
+    public function admin(){
+        return $this->belongsTo('App\Admin');
+    }
 }

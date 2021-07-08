@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->bigInteger('saldo')->unsigned()->nullable();
             $table->string('email')->unique();
-            $table->tinyInteger('status')->default('0');
-            $table->tinyInteger('status_saldo')->default('0');
+            $table->tinyInteger('status')->default('1');
+            $table->tinyInteger('status_saldo')->default('1');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

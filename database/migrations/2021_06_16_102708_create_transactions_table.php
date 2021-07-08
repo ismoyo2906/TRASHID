@@ -17,11 +17,13 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id_transaction');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('trash_id');
+            $table->unsignedBigInteger('admin_id');
             $table->bigInteger('total_price');
             $table->bigInteger('amount_transaction');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('trash_id')->references('id')->on('trashes');
+            $table->foreign('admin_id')->references('id')->on('admins');
              $table->timestamp('date_transaction')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

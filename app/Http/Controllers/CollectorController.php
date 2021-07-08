@@ -16,7 +16,6 @@ class CollectorController extends Controller
      */
     public function index()
     {
- 
         $collectors = Collector::all();
         return view('admin.collector.index', compact('collectors'));
     }

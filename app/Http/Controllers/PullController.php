@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pull;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PullController extends Controller
@@ -43,8 +44,11 @@ class PullController extends Controller
         ]);
 
         $user = User::find($id);
+        $admin = Auth::guard('admin')->user()->id;
+
         $pull = new Pull;
         $pull->user_id = $id;
+        $pull->admin_id = $admin;
         $pull->amount_pull = $request->amount_pull;
         if($pull->amount_pull>$user->saldo){
            return redirect($_SERVER['HTTP_REFERER'].'&alert=kurang_saldo');

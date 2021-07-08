@@ -34,7 +34,7 @@
                             <td>{{ $sell->amount_sell }}</td>
                             <td>{{ $sell->total_price }}</td>
                             <td>{{ $sell->date_sells }}</td>
-                            <td>-</td>
+                            <td>{{ $sell->nameLevel }}</td>
                             <td>
                                 <a href="#" class="btn btn-secondary">Detail</a>
                         </tr>

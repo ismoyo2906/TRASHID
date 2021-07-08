@@ -45,4 +45,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Admin', 'pulls', 'admin_id', 'user_id');
     }
 
+    public function transactions(){
+        return $this->hasMany('App\Transaction','user_id');
+    }
+
+    public function pull(){
+        return $this->hasMany('App\Pull','user_id');
+    }
+
+
+
 }

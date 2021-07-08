@@ -16,6 +16,7 @@ class Sell extends Model
         return DB::table('sells')
                 ->join('trashes', 'trashes.id', '=', 'sells.trash_id')
                 ->join('collectors', 'collectors.id', '=', 'sells.collector_id')
+                ->join('admins', 'admins.id', '=', 'sells.admin_id')
                 ->get();
     }
 

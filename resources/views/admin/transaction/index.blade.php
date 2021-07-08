@@ -32,10 +32,9 @@
                             <td>{{ number_format($transaction->amount_transaction,1)}} </td>
                             <td>{{ $transaction->trash_name }} </td>
                             <td>{{ $transaction->date_transaction }}</td>
-      
-                            <td>-</td>
+                            <td>{{ $transaction->nameLevel }}</td>
                             <td>
-                                <a href="{{ route('transaction.edit', $transaction->id_transaction) }}" class="btn btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-secondary">Edit</a>
                                 <a href="{{ route('transaction.destroy', $transaction->id_transaction)}}" data-id="$trash->id"
                                     class="btn btn-danger"
                                     onclick="return confirm('Apakah Anda yakin ingin Menghapus?')">Delete</a>
