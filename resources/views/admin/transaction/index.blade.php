@@ -34,7 +34,6 @@
                             <td>{{ $transaction->date_transaction }}</td>
                             <td>{{ $transaction->nameLevel }}</td>
                             <td>
-                                <a href="#" class="btn btn-secondary">Edit</a>
                                 <a href="{{ route('transaction.destroy', $transaction->id_transaction)}}" data-id="$trash->id"
                                     class="btn btn-danger"
                                     onclick="return confirm('Apakah Anda yakin ingin Menghapus?')">Delete</a>

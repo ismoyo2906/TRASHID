@@ -63,6 +63,8 @@ Route::group([
     Route::get('/ceknorek' , 'SellController@ceknorek')->name('sell.ceknorek'); 
     Route::post('/{id}' , 'SellController@store')->name('sell.store'); 
     Route::get('/' , 'SellController@index')->name('sell.index');
+
+    Route::get('/{id}' , 'SellController@destroy')->name('sell.destroy'); 
 });
 
 Route::group([

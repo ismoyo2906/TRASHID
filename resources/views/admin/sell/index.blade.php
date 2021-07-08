@@ -36,7 +36,10 @@
                             <td>{{ $sell->date_sells }}</td>
                             <td>{{ $sell->nameLevel }}</td>
                             <td>
-                                <a href="#" class="btn btn-secondary">Detail</a>
+                                <a href="{{ route('sell.destroy', $sell->id_sell )}}" data-id="$trash->id"
+                                    class="btn btn-danger"
+                                    onclick="return confirm('Apakah Anda yakin ingin Menghapus?')">Delete</a>
+                            </td>
                         </tr>
                     @empty
                     <tr>

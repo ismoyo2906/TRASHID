@@ -68,7 +68,18 @@ class SellController extends Controller
         return redirect()->route('sell.index');
     }
 
+    public function destroy($id){
+     $sell = DB::table('sells')->where('id_sell', $id)->first();
+     $trash = Trash::where('id', $sell->trash_id)->first();
+     if($trash){
+        Trash::where('id', $sell->trash_id)->update([
+            'amount' => $trash->amount + $sell->amount_sell,
+        ]);
+     }
 
-
+     DB::table('sells')->where('id_sell', $id )->delete();
+     Alert::success('Berhasil', 'Menghapus Data');
+     return redirect()->back();
+    }
 
 }
