@@ -15,6 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id_transaction');
+            $table->string('kd_transaction');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('trash_id');
             $table->unsignedBigInteger('admin_id');

@@ -17,6 +17,7 @@
                 <table class="table table-bordered table-md" id="datatable">
                    <thead>
                         <tr>
+                            <th>No Transaksi</th>
                             <th>No Rekening</th>
                             <th>Nama perusahaan</th>
                             <th>Jumlah sampah</th>
@@ -29,6 +30,7 @@
                     <tbody>
                         @forelse ($sells as $sell)
                         <tr>
+                            <td>{{ $sell->kd_transaction }}</td>
                             <td>{{ $sell->no_rek }}</td>
                             <td>{{ $sell->company_name }}</td>
                             <td>{{ $sell->amount_sell }}</td>

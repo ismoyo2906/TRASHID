@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Collector;
 use App\Sell;
 use App\Trash;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -41,6 +42,30 @@ class SellController extends Controller
         return view('admin.sell.create', compact('trashes', 'collector'));
     }
 
+    public function kdTransaction(){
+        $getRow = Sell::orderBy('id_sell', 'DESC')->get();
+        $rowCount = $getRow->count();
+
+        $lastId = $getRow->first();
+
+        $timenow = Carbon::now()->format('jny');
+        $kode = "TR".$timenow."0001";
+
+        if($rowCount>0){
+            if($lastId->id_sell < 9){
+                $kode = "TR".''.$timenow.'000'.($lastId->id_sell + 1);
+            }elseif($lastId->id_sell < 99){
+                $kode = "TR".''.$timenow.'00'.($lastId->id_sell + 1);
+            }elseif($lastId->id_sell < 9999){
+                $kode = "TR".''.$timenow."0".($lastId->id_sell + 1);
+            }else{
+                $kode = "TR".''.$timenow.''.($lastId->id_sell + 1);
+            }
+        }
+        
+        return $kode;
+    }
+
 
     public function store(Request $request, $id){
         $request->validate([
@@ -53,6 +78,7 @@ class SellController extends Controller
         $collector = Collector::find($id);
         
         $sell = new Sell;
+        $sell->kd_transaction = $this->kdTransaction();
         $sell->trash_id = $request->trash_id;
         $sell->collector_id = $collector->id;
         $sell->admin_id = $admin;

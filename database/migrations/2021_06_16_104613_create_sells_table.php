@@ -15,6 +15,7 @@ class CreateSellsTable extends Migration
     {
         Schema::create('sells', function (Blueprint $table) {
             $table->bigIncrements('id_sell');
+            $table->string('kd_transaction');
             $table->unsignedBigInteger('trash_id');
             $table->unsignedBigInteger('collector_id');
             $table->unsignedBigInteger('admin_id');

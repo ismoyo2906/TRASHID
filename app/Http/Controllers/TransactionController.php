@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use App\Trash;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -42,18 +43,42 @@ class TransactionController extends Controller
             return view('admin.transaction.create', compact('trashes', 'user'));
     }
 
+    public function kdTransaction(){
+        $getRow = Transaction::orderBy('id_transaction', 'DESC')->get();
+        $rowCount = $getRow->count();
+
+        $lastId = $getRow->first();
+
+        $timenow = Carbon::now()->format('jny');
+        $kode = "TR".$timenow."0001";
+
+        if($rowCount>0){
+            if($lastId->id_transaction < 9){
+                $kode = "TR".''.$timenow.'000'.($lastId->id_transaction + 1);
+            }elseif($lastId->id_transaction < 99){
+                $kode = "TR".''.$timenow.'00'.($lastId->id_transaction + 1);
+            }elseif($lastId->id_transaction < 9999){
+                $kode = "TR".''.$timenow."0".($lastId->id_transaction + 1);
+            }else{
+                $kode = "TR".''.$timenow.''.($lastId->id_transaction + 1);
+            }
+        }
+        
+        return $kode;
+    }
 
     public function store(Request $request, $id){
         $request->validate([
             'trash_id' => ['required'],
             'amount_transaction' => ['required']
         ]);
-    
+        
         $user = User::find($id);
         $trash = Trash::where('id', $request->trash_id)->first();
         $admin = Auth::guard('admin')->user()->id;
 
         $transaction = new Transaction;
+        $transaction->kd_transaction = $this->kdTransaction();
         $transaction->user_id = $id;
         $transaction->trash_id = $request->trash_id;
         $transaction->admin_id = $admin;
@@ -73,7 +98,7 @@ class TransactionController extends Controller
         Alert::success('Berhasil', 'Sampah Terbeli');
         return redirect()->route('transaction.index');
     }
-
+    
     public function edit($id){
         $transaction = DB::table('transactions')->where('id_transaction', $id)->first();
         $trashes = Trash::all();

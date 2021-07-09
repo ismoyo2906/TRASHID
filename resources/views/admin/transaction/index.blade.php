@@ -17,6 +17,7 @@
                 <table class="table table-bordered table-md" id="datatable">
                    <thead>
                         <tr>
+                            <th>No Transaksi</th>
                             <th>Nama Nasabah</th>
                             <th>Jumlah Sampah</th>
                             <th>Sampah</th>
@@ -28,6 +29,7 @@
                     <tbody>
                         @forelse ($transactions as $transaction)
                         <tr>
+                            <td>{{ $transaction->kd_transaction }}</td>
                             <td>{{ $transaction->name }}</td>
                             <td>{{ number_format($transaction->amount_transaction,1)}} </td>
                             <td>{{ $transaction->trash_name }} </td>
