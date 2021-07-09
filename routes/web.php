@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('companyProfile');
 });
 
 Route::get('/layouts', function () {
@@ -35,6 +35,9 @@ Route::group([
     'prefix' => 'trash',
     'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
+    Route::get('/pdfForm' , 'TrashController@pdfForm')->name('trash.pdfForm'); 
+    Route::get('/cetakPertanggal/{tglawal}/{tglakhir}' , 'TrashController@cetakPertanggal'); 
+
     Route::get('/create' , 'TrashController@create')->name('trash.create'); 
     Route::post('/' , 'TrashController@store')->name('trash.store'); 
     Route::get('/' , 'TrashController@index')->name('trash.index'); 

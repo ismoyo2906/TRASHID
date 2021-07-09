@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Trash;
 use App\Unit;
+use PDF;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -120,5 +121,16 @@ class TrashController extends Controller
 
         Alert::success('Berhasil', 'Menghapus Data');
         return redirect()->back();
+    }
+
+    public function pdfForm(){
+        return view('admin.trash.pdf-form');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir){
+        // dd('tglawal:'. $tglawal, 'tglakhir:'. $tglakhir);
+        $cetakPertanggal = Trash::with('unit')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
+        $pdf = \PDF::loadView('admin.trash.pdf', compact('cetakPertanggal'));
+        return $pdf->download('data-sampah.pdf');
     }
 }
