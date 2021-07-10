@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Barryvdh\DomPDF\PDF;
 
 class PullController extends Controller
 {   
@@ -60,6 +61,15 @@ class PullController extends Controller
         $pull->save();
         Alert::success('Berhasil', 'Saldo Ditarik');
         return redirect()->route('pull.index');
+    }
 
+    public function pdfForm(){
+        return view('admin.pull.pdf-form');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir){
+        $cetakPertanggal = $this->Pull->allData()->whereBetween('date_pull', [$tglawal, $tglakhir]);
+        $pdf = \PDF::loadView('admin.pull.pdf', compact('cetakPertanggal'));
+        return $pdf->download('data tarik saldo.pdf');
     }
 }

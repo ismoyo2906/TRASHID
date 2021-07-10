@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
-
+USE PDF;
 class TransactionController extends Controller
 {
 
@@ -182,5 +182,16 @@ class TransactionController extends Controller
         return redirect()->back();
     }
 
+    public function pdfForm(){
+        return view('admin.transaction.pdf-form');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir){
+        $cetakPertanggal = $this->Transaction->allData()->whereBetween('date_transaction', [$tglawal, $tglakhir]);
+
+        // $cetakPertanggal = Trash::with('unit')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
+        $pdf = \PDF::loadView('admin.transaction.pdf', compact('cetakPertanggal'));
+        return $pdf->download('data-Transaksi.pdf');
+    }
 
 }

@@ -108,4 +108,13 @@ class SellController extends Controller
      return redirect()->back();
     }
 
+    public function pdfForm(){
+        return view('admin.sell.pdf-form');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir){
+        $cetakPertanggal = $this->Sell->allData()->whereBetween('date_sells', [$tglawal, $tglakhir]);
+        $pdf = \PDF::loadView('admin.sell.pdf', compact('cetakPertanggal'));
+        return $pdf->download('data Pembelian.pdf');
+    }
 }

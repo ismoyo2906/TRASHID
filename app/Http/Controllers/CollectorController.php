@@ -6,6 +6,7 @@ use App\Collector;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Barryvdh\DomPDF\PDF;
 
 class CollectorController extends Controller
 {
@@ -131,5 +132,15 @@ class CollectorController extends Controller
 
         Alert::success('Berhasil', 'Menghapus data');
         return redirect()->back();
+    }
+
+    public function pdfForm(){
+        return view('admin.collector.pdf-form');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir){
+        $cetakPertanggal = Collector::with('sell')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
+        $pdf = \PDF::loadView('admin.collector.pdf', compact('cetakPertanggal'));
+        return $pdf->download('data-pengepul.pdf');
     }
 }

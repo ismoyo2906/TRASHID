@@ -22,7 +22,7 @@
                                 <tr>
                                     <td>{{ Auth::user()->name }}</td>
                                     <td>Rp. {{ number_format($pull->amount_pull)}}</td>
-                                    <td>{{ $pull->date_pull->diffForHumans()}}</td>
+                                    <td>{{ $pull->date_pull->format('Y-m-d')}}</td>
                                 </tr>
                                 @empty
                                 <tr>

@@ -97,7 +97,6 @@
             @yield('content')
         </main>
     </div>
-
     
     <script src="{{ asset('assets/datatables.min.js')}}"></script>
     @stack('script')

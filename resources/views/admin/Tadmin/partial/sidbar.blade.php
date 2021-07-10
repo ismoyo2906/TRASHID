@@ -32,10 +32,10 @@
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i><span>Print Laporan</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link beep beep-sidebar" href="{{ route('trash.pdfForm')}}">Data Sampah</a></li>
-                    <li><a class="nav-link beep beep-sidebar" href="#">Data Pengepul</a></li>
-                    <li><a class="nav-link beep beep-sidebar" href="#">Data Beli Sampah</a></li>
-                    <li><a class="nav-link beep beep-sidebar" href="#">Data Tarik Saldo</a></li>
-                    <li><a class="nav-link beep beep-sidebar" href="#">Data Jual Pengepul</a></li>
+                    <li><a class="nav-link beep beep-sidebar" href="{{ route('collector.pdfForm')}}">Data Pengepul</a></li>
+                    <li><a class="nav-link beep beep-sidebar" href="{{ route('transaction.pdfForm')}}">Data Beli Sampah</a></li>
+                    <li><a class="nav-link beep beep-sidebar" href="{{ route('pull.pdfForm')}}">Data Tarik Saldo</a></li>
+                    <li><a class="nav-link beep beep-sidebar" href="{{ route('sell.pdfForm')}}">Data Jual Pengepul</a></li>
                 </ul>
             </li>
         </ul>

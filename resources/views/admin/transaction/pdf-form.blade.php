@@ -1,6 +1,6 @@
 @extends('admin.Tadmin.master')
 
-@section('tittle', 'Cetak Data Sampah' )
+@section('tittle', 'Cetak Data Transaksi' )
 
 @section('content')
 <div class="col-12 col-md-6 col-lg-12">
@@ -16,7 +16,7 @@
                     <input type="date"  name="tglakhir" id="tglakhir" class="form-control datepicker">
                 </div>
                 <div class="ml-2">
-                    <a href="" onclick="this.href='/trash/cetakPertanggal/'+ document.getElementById('tglawal').value +
+                    <a href="" onclick="this.href='/transaction/cetakPertanggal/'+ document.getElementById('tglawal').value +
                     '/' + document.getElementById('tglakhir').value" target="_blank" class="btn btn-primary col-md-12">
                     Cetak <i class="fas fa-print"></i></a>
                 </div>

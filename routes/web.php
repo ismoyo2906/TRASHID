@@ -50,6 +50,9 @@ Route::group([
     'prefix' => 'collector',
     'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
+    Route::get('/pdfForm' , 'CollectorController@pdfForm')->name('collector.pdfForm'); 
+    Route::get('/cetakPertanggal/{tglawal}/{tglakhir}' , 'CollectorController@cetakPertanggal'); 
+
     Route::get('/create' , 'CollectorController@create')->name('collector.create'); 
     Route::post('/' , 'CollectorController@store')->name('collector.store'); 
     Route::get('/' , 'CollectorController@index')->name('collector.index'); 
@@ -62,6 +65,9 @@ Route::group([
     'prefix' => 'sell',
     'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
+    Route::get('/pdfForm' , 'SellController@pdfForm')->name('sell.pdfForm'); 
+    Route::get('/cetakPertanggal/{tglawal}/{tglakhir}' , 'SellController@cetakPertanggal'); 
+
     Route::get('/inputnorek' , 'SellController@inputnorek')->name('sell.inputnorek'); 
     Route::get('/ceknorek' , 'SellController@ceknorek')->name('sell.ceknorek'); 
     Route::post('/{id}' , 'SellController@store')->name('sell.store'); 
@@ -86,6 +92,9 @@ Route::group([
     'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
     
 ], function(){
+    Route::get('/pdfForm' , 'TransactionController@pdfForm')->name('transaction.pdfForm'); 
+    Route::get('/cetakPertanggal/{tglawal}/{tglakhir}' , 'TransactionController@cetakPertanggal'); 
+
     Route::get('/inputnorek' , 'TransactionController@inputnorek')->name('transaction.inputnorek');
     Route::get('/ceknorek' , 'TransactionController@ceknorek')->name('transaction.ceknorek');
     Route::post('/{id}' , 'TransactionController@store')->name('transaction.store');
@@ -100,6 +109,9 @@ Route::group([
     'prefix' => 'pull',
     'middleware' => ['auth:admin', 'ceklevel:admin,petugas']
 ], function(){
+    Route::get('/pdfForm' , 'PullController@pdfForm')->name('pull.pdfForm'); 
+    Route::get('/cetakPertanggal/{tglawal}/{tglakhir}' , 'PullController@cetakPertanggal'); 
+
     Route::get('/inputnorek' , 'PullController@inputnorek')->name('pull.inputnorek');
     Route::get('/ceknorek' , 'PullController@ceknorek')->name('pull.ceknorek');
     Route::post('/{id}' , 'PullController@store')->name('pull.store');

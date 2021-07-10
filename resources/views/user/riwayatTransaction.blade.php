@@ -28,7 +28,7 @@
                                     <td>Rp. {{ number_format($transaction->total_price)}}</td>
                                     <td>{{ $transaction->amount_transaction }}</td>
                                     <td>{{ $transaction->admin->nameLevel }}</td>
-                                    <td>{{ $transaction->date_transaction->diffForHumans()}}</td>
+                                    <td>{{ $transaction->date_transaction->format('Y-m-d')}}</td>
                                 </tr>
                                 @empty
                                 <tr>
