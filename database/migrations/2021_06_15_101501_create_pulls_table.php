@@ -18,6 +18,7 @@ class CreatePullsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->bigInteger('amount_pull');
+            $table->tinyInteger('pencairan')->default(false);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('admin_id')->references('id')->on('admins');

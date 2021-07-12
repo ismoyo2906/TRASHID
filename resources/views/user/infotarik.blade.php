@@ -15,6 +15,7 @@
                                 <tr>
                                     <th>Nama nasabah</th>
                                     <th>Jumlah Penarikan</th>
+                                    <th>Status</th>
                                     <th>Tanggal</th>
                                 </tr>
                             </thead>
@@ -23,11 +24,18 @@
                                 <tr>
                                     <td>{{ Auth::user()->name }}</td>
                                     <td>Rp. {{ number_format($pull->amount_pull)}}</td>
+                                    <td>
+                                    @if ($pull->pencairan == true)
+                                        <span class="btn btn-success btn-sm disabled mb-3">Selesai</span>
+                                     @elseif ($pull->pencairan == false)
+                                          <span class="btn btn-danger btn-sm disabled">proses</span>
+                                     @endif
+                                    </td>
                                     <td>{{ $pull->date_pull->format('Y-m-d')}}</td>
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="4" align="center">no data appears</td>
+                                    <td colspan="5" align="center">no data appears</td>
                                 </tr>
                                 @endforelse
                             </tbody>

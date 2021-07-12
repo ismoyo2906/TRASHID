@@ -72,4 +72,11 @@ class PullController extends Controller
         $pdf = \PDF::loadView('admin.pull.pdf', compact('cetakPertanggal'));
         return $pdf->download('data tarik saldo.pdf');
     }
+
+    public function active($id){
+        Pull::where('id', $id)->update([
+            'pencairan' => true
+        ]);
+        return redirect()->back();
+    }
 }

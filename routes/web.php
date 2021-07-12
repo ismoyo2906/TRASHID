@@ -116,6 +116,8 @@ Route::group([
     Route::get('/ceknorek' , 'PullController@ceknorek')->name('pull.ceknorek');
     Route::post('/{id}' , 'PullController@store')->name('pull.store');
     Route::get('/' , 'PullController@index')->name('pull.index');
+
+    Route::get('/active/{id}' , 'PullController@active')->name('pull.active');
 });
 
 Auth::routes();

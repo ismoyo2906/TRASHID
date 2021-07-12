@@ -33,7 +33,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="4" align="center">no data appears</td>
+                                    <td colspan="6" align="center">no data appears</td>
                                 </tr>
                                 @endforelse
                             </tbody>

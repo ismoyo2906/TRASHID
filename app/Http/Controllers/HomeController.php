@@ -63,7 +63,7 @@ class HomeController extends Controller
             'saldo' => $user->saldo - $pull->amount_pull,
         ]);
         $pull->save();
-        Alert::success('Berhasil', 'Saldo Ditarik');
+        Alert::success('Berhasil', 'Meminta persetujuan Saldo');
         return redirect()->route('home');
 
     }
@@ -101,4 +101,10 @@ class HomeController extends Controller
         $pdf = \PDF::loadView('user.pdf', compact('cetakPertanggal'));
         return $pdf->download('data transaction.pdf');
     }
+
+    // public function penjumlah(){
+    //     $users = User::all()->sum('status');
+    //     $count = $users == 1;
+    //     return view('admin.Tadmin.partial.sidbar', compact('count'));
+    // }
 }

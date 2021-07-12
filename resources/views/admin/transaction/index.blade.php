@@ -21,6 +21,7 @@
                             <th>Nama Nasabah</th>
                             <th>Jumlah Sampah</th>
                             <th>Sampah</th>
+                            <th>Satuan</th>
                             <th>Tanggal Stor</th>
                             <th>Petugas</th>
                             <th>Action</th>
@@ -33,6 +34,7 @@
                             <td>{{ $transaction->name }}</td>
                             <td>{{ number_format($transaction->amount_transaction,1)}} </td>
                             <td>{{ $transaction->trash_name }} </td>
+                            <td>{{ $transaction->unit_id }} </td>
                             <td>{{ $transaction->date_transaction }}</td>
                             <td>{{ $transaction->nameLevel }}</td>
                             <td>

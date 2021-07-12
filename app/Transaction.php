@@ -27,6 +27,10 @@ class Transaction extends Model
         return $this->belongsTo('App\Trash');
     }
 
+    public function unit(){
+        return $this->belongsTo('App\Unit');
+    }
+
     public function admin(){
         return $this->belongsTo('App\Admin');
     }
