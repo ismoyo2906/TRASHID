@@ -33,6 +33,9 @@ class AdminController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password'])
         ]);
+        
+        Alert::success('Berhasil', 'Menambahkan Data');
+        return redirect()->route('admin.index');
     }
 
     public function edit($id){

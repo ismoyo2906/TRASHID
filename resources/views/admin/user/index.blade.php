@@ -30,7 +30,7 @@
                             <td>Rp. {{ number_format($user->saldo) }}</td>                                          
                             <td>                           
                                 @if ($user->status == 1)
-                                    <a href="{{ route('user.noactive', $user->id)}}" class="badge badge-info" onclick="return confirm('Apakah Anda yakin ingin Aktifkan?')">Not Active</a>
+                                    <a href="{{ route('user.noactive', $user->id)}}" class="badge badge-danger" onclick="return confirm('Apakah Anda yakin ingin Aktifkan?')">Not Active</a>
                                 @elseif ($user->status == 0)
                                     <a href="{{ route('user.active', $user->id)}}" class="badge badge-success" onclick="return confirm('Apakah Anda yakin untuk non-aktifkan?')">Active</a>
                                 @endif

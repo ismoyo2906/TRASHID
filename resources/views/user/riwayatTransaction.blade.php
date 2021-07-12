@@ -8,6 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <span class="btn btn-primary btn-lg disabled  mb-3"><h5>Riwayat Transaksi</h5></span>
+                    <a href="{{ route('user.pdfForm') }}" class="btn btn-primary float-right">Print <i class="fas fa-print"></i></a>
                     <div class="table-responsive">
                         <table class="table table-bordered table-md" id="datatable">
                            <thead>

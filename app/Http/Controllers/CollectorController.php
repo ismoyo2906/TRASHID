@@ -62,11 +62,9 @@ class CollectorController extends Controller
         $collector->address = $request->address;
         $collector->phone = $request->phone;
         $collector->save();
-
-
+        
         Alert::success('Berhasil', 'Menambahkan Data');
         return redirect()->route('collector.index');
-        
     }
 
     /**

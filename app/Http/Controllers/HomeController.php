@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pull;
 use App\User;
-use COM;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -78,5 +78,27 @@ class HomeController extends Controller
         $user = Auth::user();
         $transaction = $user->transactions;
         return view('user.riwayatTransaction', compact('transaction'));
+    }
+
+    public function pdfFormPenarikan(){
+        return view('user.pdfFormPenarikan');
+    }
+
+    public function cetakPertanggalPenarikan($tglawal, $tglakhir){
+        $user = Auth::user();
+        $cetakPertanggal = $user->pull->whereBetween('date_pull', [$tglawal, $tglakhir]);
+        $pdf = \PDF::loadView('user.pdfPenarikan', compact('cetakPertanggal'));
+        return $pdf->download('data Penarikan.pdf');
+    }
+
+    public function pdfForm(){
+        return view('user.pdf-form');
+    }
+
+    public function cetakPertanggal($tglawal, $tglakhir){
+        $user = Auth::user();
+        $cetakPertanggal = $user->transactions->whereBetween('date_transaction', [$tglawal, $tglakhir]);
+        $pdf = \PDF::loadView('user.pdf', compact('cetakPertanggal'));
+        return $pdf->download('data transaction.pdf');
     }
 }

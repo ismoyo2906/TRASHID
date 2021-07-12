@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" value="{{ old('password', $admin->password)}}">
+                <input type="password" class="form-control" name="password" id="password" value="{{ old('password')}}">
                 @error('password')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

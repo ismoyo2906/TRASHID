@@ -142,4 +142,10 @@ Route::group(['middleware' => ['auth:web', 'isUser']], function(){
 
     Route::get('/infortarik', 'HomeController@infortarik')->name('user.infortarik');
     Route::get('/riwayatTransaction', 'HomeController@riwayatTransaction')->name('user.riwayatTransaction');
+
+    Route::get('/pdfFormPenarikan' , 'HomeController@pdfFormPenarikan')->name('user.pdfFormPenarikan'); 
+    Route::get('/cetakPertanggalPenarikan/{tglawal}/{tglakhir}' , 'HomeController@cetakPertanggalPenarikan');
+     
+    Route::get('/pdfForm' , 'HomeController@pdfForm')->name('user.pdfForm'); 
+    Route::get('/cetakPertanggal/{tglawal}/{tglakhir}' , 'HomeController@cetakPertanggal'); 
 });
