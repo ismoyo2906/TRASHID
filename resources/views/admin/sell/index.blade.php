@@ -20,6 +20,7 @@
                             <th>No Transaksi</th>
                             <th>No Rekening</th>
                             <th>Nama perusahaan</th>
+                            <th>Nama Sampah</th>
                             <th>Jumlah sampah</th>
                             <th>Total Harga</th>
                             <th>Tanggal Transaksi</th>
@@ -31,12 +32,13 @@
                         @forelse ($sells as $sell)
                         <tr>
                             <td>{{ $sell->kd_transaction }}</td>
-                            <td>{{ $sell->no_rek }}</td>
-                            <td>{{ $sell->company_name }}</td>
-                            <td>{{ $sell->amount_sell }}</td>
-                            <td>{{ $sell->total_price }}</td>
-                            <td>{{ $sell->date_sells }}</td>
-                            <td>{{ $sell->nameLevel }}</td>
+                            <td>{{ $sell->collector->no_rek }}</td>
+                            <td>{{ $sell->collector->company_name }}</td>
+                            <td>{{ $sell->trash->trash_name }}</td>
+                            <td>{{ $sell->amount_sell }} {{ $sell->trash->unit->unit_name }}</td>
+                            <td>Rp. {{ number_format( $sell->total_price) }}</td>
+                            <td>{{ $sell->date_sells->format('Y-m-d') }}</td>
+                            <td>{{ $sell->admin->nameLevel }}</td>
                             <td>
                                 <a href="{{ route('sell.destroy', $sell->id_sell )}}" data-id="$trash->id"
                                     class="btn btn-danger"

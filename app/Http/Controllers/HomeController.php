@@ -102,9 +102,13 @@ class HomeController extends Controller
         return $pdf->download('data transaction.pdf');
     }
 
-    // public function penjumlah(){
-    //     $users = User::all()->sum('status');
-    //     $count = $users == 1;
-    //     return view('admin.Tadmin.partial.sidbar', compact('count'));
-    // }
+    public function penjumlah(){
+        $user = User::where('status', 1)->get();
+        // $user = DB::table('users')
+        // ->select(DB::raw('count(*) as user_count, status'))
+        // ->where('status', '==', 1)
+        // ->groupBy('status')
+        // ->get();
+        return view('admin.Tadmin.partial.sidbar', compact('user'));
+    }
 }

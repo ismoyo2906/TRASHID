@@ -21,7 +21,6 @@
                             <th>Nama Nasabah</th>
                             <th>Jumlah Sampah</th>
                             <th>Sampah</th>
-                            <th>Satuan</th>
                             <th>Tanggal Stor</th>
                             <th>Petugas</th>
                             <th>Action</th>
@@ -31,12 +30,11 @@
                         @forelse ($transactions as $transaction)
                         <tr>
                             <td>{{ $transaction->kd_transaction }}</td>
-                            <td>{{ $transaction->name }}</td>
-                            <td>{{ number_format($transaction->amount_transaction,1)}} </td>
-                            <td>{{ $transaction->trash_name }} </td>
-                            <td>{{ $transaction->unit_id }} </td>
-                            <td>{{ $transaction->date_transaction }}</td>
-                            <td>{{ $transaction->nameLevel }}</td>
+                            <td>{{ $transaction->user->name }}</td>
+                            <td>{{ number_format($transaction->amount_transaction,1)}} {{ $transaction->trash->unit->unit_name }}</td>
+                            <td>{{ $transaction->trash->trash_name }} </td>
+                            <td>{{ $transaction->date_transaction->format('Y-m-d') }}</td>
+                            <td>{{ $transaction->admin->nameLevel }}</td>
                             <td>
                                 <a href="{{ route('transaction.destroy', $transaction->id_transaction)}}" data-id="$trash->id"
                                     class="btn btn-danger"

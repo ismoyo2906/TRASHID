@@ -17,6 +17,7 @@
                                     <th>Nama Sampah</th>
                                     <th>Total harga</th>
                                     <th>Jumlah</th>
+                                    <th>Satuan</th>
                                     <th>petugas</th>
                                     <th>Tanggal</th>
                                 </tr>
@@ -28,6 +29,7 @@
                                     <td>{{ $transaction->trash->trash_name }}</td>
                                     <td>Rp. {{ number_format($transaction->total_price)}}</td>
                                     <td>{{ $transaction->amount_transaction }}</td>
+                                    <td>{{ $transaction->trash->unit->unit_name }}</td>
                                     <td>{{ $transaction->admin->nameLevel }}</td>
                                     <td>{{ $transaction->date_transaction->format('Y-m-d')}}</td>
                                 </tr>

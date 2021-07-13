@@ -35,6 +35,7 @@
                 <th>No Transaksi</th>
                 <th>No Rekening</th>
                 <th>Nama perusahaan</th>
+                <th>Nama Sampah</th>
                 <th>jumlah Sampah</th>
                 <th>Total Harga</th>
                 <th>petugas</th>
@@ -44,12 +45,13 @@
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>{{$c->kd_transaction}}</td>
-                    <td>{{$c->no_rek}}</td>
-                    <td>{{$c->company_name}}</td>
-                    <td>{{$c->amount_sell}}</td>
-                    <td>Rp. {{ number_format($c->total_price)}}</td>
-                    <td>{{$c->nameLevel}}</td>
-                    <td>{{$c->date_sells}}</td>
+                    <td>{{$c->collector->no_rek}}</td>
+                    <td>{{$c->collector->company_name}}</td>
+                    <td>{{$c->trash->trash_name}}</td>
+                    <td>{{$c->amount_sell}} {{ $c->trash->unit->unit_name }}</td>
+                    <td>Rp. {{ ($c->total_price)}}</td>
+                    <td>{{$c->admin->nameLevel }}</td>
+                    <td>{{$c->date_sells->format('Y-m-d')}}</td>
                 </tr>
             @endforeach
         </table>

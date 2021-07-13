@@ -20,7 +20,7 @@ class SellController extends Controller
     }
  
     public function index(){
-        $sells = $this->Sell->allData();
+        $sells = Sell::with(['trash', 'collector', 'admin'])->get();
         return view('admin.sell.index', compact('sells'));
     }
 
@@ -113,7 +113,7 @@ class SellController extends Controller
     }
 
     public function cetakPertanggal($tglawal, $tglakhir){
-        $cetakPertanggal = $this->Sell->allData()->whereBetween('date_sells', [$tglawal, $tglakhir]);
+        $cetakPertanggal = Sell::with(['trash', 'collector', 'admin'])->get()->whereBetween('date_sells', [$tglawal, $tglakhir]);
         $pdf = \PDF::loadView('admin.sell.pdf', compact('cetakPertanggal'));
         return $pdf->download('data Pembelian.pdf');
     }

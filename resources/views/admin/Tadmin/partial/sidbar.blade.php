@@ -9,9 +9,9 @@
 
             <li class="menu-header">Starter</li>
             <li><a class="nav-link" href="{{ route('user.index') }}"><i class="far fa-user"></i><span>Nasabah</span>
-                {{-- <i class="badge bg-secondary">{{ $count  }}</i> --}}
-                {{-- @if ()
 
+                {{-- <i class="badge bg-secondary">{{ ($user) }}</i> --}}
+                {{-- @if ($user->status == 1)
                 @else
                 
                 @endif --}}

@@ -24,14 +24,14 @@ class Transaction extends Model
     }
 
     public function trash(){
-        return $this->belongsTo('App\Trash');
-    }
-
-    public function unit(){
-        return $this->belongsTo('App\Unit');
+        return $this->belongsTo(Trash::class);
     }
 
     public function admin(){
         return $this->belongsTo('App\Admin');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

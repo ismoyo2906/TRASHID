@@ -19,8 +19,8 @@ class TransactionController extends Controller
         $this->Transaction = new Transaction();
     }
  
-    public function index(){
-        $transactions = $this->Transaction->allData();
+    public function index(){      
+        $transactions = Transaction::with(['trash', 'admin', 'user'])->get();
         return view('admin.transaction.index', compact('transactions'));
     }
 
@@ -187,9 +187,7 @@ class TransactionController extends Controller
     }
 
     public function cetakPertanggal($tglawal, $tglakhir){
-        $cetakPertanggal = $this->Transaction->allData()->whereBetween('date_transaction', [$tglawal, $tglakhir]);
-
-        // $cetakPertanggal = Trash::with('unit')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
+        $cetakPertanggal = Transaction::with(['trash', 'admin', 'user'])->get()->whereBetween('date_transaction', [$tglawal, $tglakhir]);
         $pdf = \PDF::loadView('admin.transaction.pdf', compact('cetakPertanggal'));
         return $pdf->download('data-Transaksi.pdf');
     }

@@ -43,11 +43,11 @@
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>{{$c->kd_transaction}}</td>
-                    <td>{{$c->name}}</td>
-                    <td>{{ number_format($c->amount_transaction,1)}} </td>
-                    <td>{{$c->trash_name}}</td>
-                    <td>{{$c->nameLevel}}</td>
-                    <td>{{$c->date_transaction }}</td>
+                    <td>{{$c->user->name }}</td>
+                    <td>{{ number_format($c->amount_transaction,1)}} {{ $c->trash->unit->unit_name }}</td>
+                    <td>{{$c->trash->trash_name}}</td>
+                    <td>{{$c->admin->nameLevel}}</td>
+                    <td>{{$c->date_transaction->format('Y-m-d') }}</td>
                 </tr>
             @endforeach
         </table>
