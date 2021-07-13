@@ -7,8 +7,15 @@
             
             <div class="card">
                 <div class="card-body">
-                    <span class="btn btn-primary btn-lg disabled mb-3"><h5>Riwayat Penarikan</h5></span>
-                    <a href="{{ route('user.pdfFormPenarikan') }}" class="btn btn-primary float-right">Print <i class="fas fa-print"></i></a>
+                    <div class="row">
+                        <span class="btn btn-primary btn-lg disabled mb-3 ml-3"><h5>Riwayat Penarikan</h5></span>
+                    </div>
+                    
+                    <a href="{{ route('user.pdfFormPenarikan') }}" class="btn btn-primary float-right mb-3">Print <i class="fas fa-print"></i></a>
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('user.infortarik')}}">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search by tanggal" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                     <div class="table-responsive">
                         <table class="table table-bordered table-md" id="datatable">
                            <thead>
@@ -40,6 +47,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        {{ $pulls->links() }}
                     </div>
                 </div>
             </div>
@@ -48,14 +56,5 @@
 </div>
 @endsection
 
-@push('script')
-  <script>
-       $(document).ready(function(){
-        
-        $('#datatable').DataTable();
-
-      });
-  </script>
-@endpush
 
 

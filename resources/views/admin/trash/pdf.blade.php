@@ -34,7 +34,7 @@
                 <th>No</th>
                 <th>Nama Sampah</th>
                 <th>Harga</th>
-                <th>Jumlah</th>
+                <th>Stok</th>
                 <th>Unit</th>
                 <th>Tanggal</th>
             </tr>
@@ -51,10 +51,5 @@
         </table>
      </div>
         
-
-        {{-- <script type="text/javascript">
-            window.print();
-        </script>
-        --}}
 </body>
 </html>

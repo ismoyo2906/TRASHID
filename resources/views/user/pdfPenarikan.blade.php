@@ -32,6 +32,7 @@
                 <th>No</th>
                 <th>Nama Nasabah</th>
                 <th>Jumlah Penarikan</th>
+                <th>Status</th>
                 <th>Tanggal</th>
             </tr>
             @foreach ($cetakPertanggal as $key => $c)
@@ -39,6 +40,13 @@
                     <td>{{$key+1}}</td>
                     <td>{{Auth::user()->name}}</td>
                     <td>Rp. {{ number_format($c->amount_pull)}}</td>
+                    <td>
+                        @if ($c->pencairan == true)
+                        <span class="btn btn-success btn-sm disabled mb-3">Selesai</span>
+                        @elseif ($c->pencairan == false)
+                            <span class="btn btn-danger btn-sm disabled">proses</span>
+                        @endif
+                    </td>
                     <td>{{$c->date_pull->format('Y-m-d')}}</td>
                 </tr>
             @endforeach

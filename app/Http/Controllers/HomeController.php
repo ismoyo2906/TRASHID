@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pull;
+use App\Transaction;
 use App\User;
 use PDF;
 use Illuminate\Http\Request;
@@ -65,19 +66,28 @@ class HomeController extends Controller
         $pull->save();
         Alert::success('Berhasil', 'Meminta persetujuan Saldo');
         return redirect()->route('home');
-
     }
 
-    public function infortarik(){
-        $user = Auth::user();
-        $pulls = $user->pull;
+    public function infortarik(Request $request){
+        $user = Auth::user()->id;
+
+        if($request->has('search')){
+            $pulls = Pull::where('date_pull', 'LIKE', '%'.$request->search.'%')->paginate(10);
+        }else{
+            $pulls = Pull::where('user_id', $user)->paginate(10);
+        }
         return view('user.infotarik', compact('pulls'));
     }
 
-    public function riwayatTransaction(){
-        $user = Auth::user();
-        $transaction = $user->transactions;
-        return view('user.riwayatTransaction', compact('transaction'));
+    public function riwayatTransaction(Request $request){
+        $user = Auth::user()->id;
+
+        if($request->has('search')){
+            $transactions = Transaction::where('date_transaction', 'LIKE', '%'.$request->search.'%')->paginate(10);
+        }else{
+            $transactions = Transaction::where('user_id', $user)->paginate(10);
+        }
+        return view('user.riwayatTransaction', compact('transactions'));
     }
 
     public function pdfFormPenarikan(){
