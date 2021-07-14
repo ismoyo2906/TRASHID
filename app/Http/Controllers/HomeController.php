@@ -8,6 +8,7 @@ use App\User;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
@@ -124,13 +125,5 @@ class HomeController extends Controller
         }
     }
 
-    public function penjumlah(){
-        $user = User::where('status', 1)->get();
-        // $user = DB::table('users')
-        // ->select(DB::raw('count(*) as user_count, status'))
-        // ->where('status', '==', 1)
-        // ->groupBy('status')
-        // ->get();
-        return view('admin.Tadmin.partial.sidbar', compact('user'));
-    }
+    
 }
