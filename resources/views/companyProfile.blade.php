@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/logo.png" rel="icon">
+  <link href="{{ asset('Cprofile/img/icon.png')}}" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -19,7 +19,6 @@
   <!-- Vendor CSS Files -->
   <link href="{{ asset('Cprofile/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ asset('Cprofile/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{ asset('Cprofile/vendor/aos/aos.css')}}" rel="stylesheet">
   <link href="{{ asset('Cprofile/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{ asset('Cprofile/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
   <link href="{{ asset('Cprofile/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
@@ -35,8 +34,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{ asset('Cprofile/img/sampah.png')}}" alt="">
-        <span>TRASH.ID</span>
+        <img style="max-width:500px" src="{{ asset('Cprofile/img/logo5.png')}}" alt="">
       </a>
 
       <nav id="navbar" class="navbar">
@@ -50,7 +48,6 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
     </div>
   </header><!-- End Header -->
 
@@ -143,13 +140,11 @@
             </div>
           </div>
 
-
         </div>
 
       </div>
 
     </section><!-- End Services Section -->
-
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
@@ -204,8 +199,7 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <img src="Cprofile/img/logo.png" alt="">
-              <span>TRASH.ID</span>
+              <img src="Cprofile/img/logo5.png" alt="">
             </a>
             <p>Pengelolaan bank sampah anda menjadi lebih<div> mudah dan cepat</div></p>
           </div>
@@ -213,21 +207,21 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Why</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Log in</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#about">About</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#why">Why</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ route('login') }}">Log in</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Contact Us</h4>
             <p>
-              Bank Sampah melati<br>
+              Bank Sampah Trashid<br>
               Jl. St. KA Cicayur No.27, Cisauk, <br>
               Kec. Cisauk, Tangerang, Banten 15341 <br><br>
               <strong>Phone:</strong> +62 5589 55488 55<br>
-              <strong>Email:</strong> trash@example.com<br>
+              <strong>Email:</strong> trashid@gmail.com<br>
             </p>
 
           </div>
@@ -241,7 +235,7 @@
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('Cprofile/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
-  <script src="{{ asset('Cprofile/vendor/aos/aos.js')}}"></script>
+  {{-- <script src="{{ asset('Cprofile/vendor/aos/aos.js')}}"></script> --}}
   <script src="{{ asset('Cprofile/vendor/php-email-form/validate.js')}}"></script>
   <script src="{{ asset('Cprofile/vendor/swiper/swiper-bundle.min.js')}}"></script>
   <script src="{{ asset('Cprofile/vendor/purecounter/purecounter.js')}}"></script>

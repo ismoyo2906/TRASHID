@@ -10,6 +10,14 @@
             position: relative;
             border: 1px solid #543535
         }
+        td{
+            height: 50px;
+            text-align: center;
+        }
+        .image{
+            max-width: 200px;
+            float: left;
+        }
     </style>
 </head>
 <body>
@@ -17,9 +25,10 @@
      <table style="width: 100%;">
         <tr>
             <td align="center">
+                <img class="image" src="{{ public_path('assets/img/Logo.png')}}" alt="">
                 <span style="line-height:1.6; font-wight:bold">
                   BANK SAMPAH MELATI BERSIH INDONESIA<br>
-                    Tangerang selatan pamulang no 12
+                   <b>DATA PENARIKAN SALDO</b>
                 </span>
             </td>
         </tr>
