@@ -15,8 +15,13 @@
             text-align: center;
         }
         .image{
-            max-width: 200px;
+            max-width: 150px;
             float: left;
+            margin-top: -20px;
+        }
+        .text{
+            float: left;
+            margin-left: 70px;
         }
     </style>
 </head>
@@ -25,9 +30,9 @@
      <table style="width: 100%;">
         <tr>
             <td align="center">
-                <img class="image" src="{{ public_path('assets/img/Logo.png')}}" alt="">
-                <span style="line-height:1.6; font-wight:bold">
-                  BANK SAMPAH MELATI BERSIH INDONESIA<br>
+                <img class="image" src="{{ public_path('Cprofile/img/logo5.png')}}" alt="">
+                <span style="line-height:1.6; font-wight:bold" class="text">
+                  BANK SAMPAH TRASH INDONESIA<br>
                    <b>DATA PENARIKAN SALDO</b>
                 </span>
             </td>
@@ -46,7 +51,7 @@
             </tr>
             @foreach ($cetakPertanggal as $key => $c)
                 <tr>
-                    <td>{{$key+1}}</td>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{Auth::user()->name}}</td>
                     <td>Rp. {{ number_format($c->amount_pull)}}</td>
                     <td>

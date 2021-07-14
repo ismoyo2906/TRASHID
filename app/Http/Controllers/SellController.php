@@ -112,9 +112,13 @@ class SellController extends Controller
         return view('admin.sell.pdf-form');
     }
 
-    public function cetakPertanggal($tglawal, $tglakhir){
-        $cetakPertanggal = Sell::with(['trash', 'collector', 'admin'])->get()->whereBetween('date_sells', [$tglawal, $tglakhir]);
-        $pdf = \PDF::loadView('admin.sell.pdf', compact('cetakPertanggal'));
-        return $pdf->download('data Pembelian.pdf');
+    public function cetakPertanggal(Request $request){
+        if($request->tglawal && $request->tglakhir){
+            $cetakPertanggal = Sell::with(['trash', 'collector', 'admin'])->get()->whereBetween('date_sells', [$request->tglawal, $request->tglakhir]);
+            $pdf = \PDF::loadView('admin.sell.pdf', compact('cetakPertanggal'));
+            return $pdf->download('data Pembelian.pdf');
+        }else{
+            return redirect()->route('sell.pdfForm')->with('failed', 'Harap isi tanggal');
+        }
     }
 }

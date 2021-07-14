@@ -67,10 +67,16 @@ class PullController extends Controller
         return view('admin.pull.pdf-form');
     }
 
-    public function cetakPertanggal($tglawal, $tglakhir){
-        $cetakPertanggal = $this->Pull->allData()->whereBetween('date_pull', [$tglawal, $tglakhir]);
-        $pdf = \PDF::loadView('admin.pull.pdf', compact('cetakPertanggal'));
-        return $pdf->download('data tarik saldo.pdf');
+    public function cetakPertanggal(Request $request){
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
+        if($tglawal && $tglakhir){
+            $cetakPertanggal = $this->Pull->allData()->whereBetween('date_pull', [$tglawal, $tglakhir]);
+            $pdf = \PDF::loadView('admin.pull.pdf', compact('cetakPertanggal'));
+            return $pdf->download('data tarik saldo.pdf');
+        }else{
+            return redirect()->route('pull.pdfForm')->with('failed', 'Harap isi tanggal');
+        }
     }
 
     public function active($id){

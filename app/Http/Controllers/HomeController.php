@@ -94,22 +94,34 @@ class HomeController extends Controller
         return view('user.pdfFormPenarikan');
     }
 
-    public function cetakPertanggalPenarikan($tglawal, $tglakhir){
-        $user = Auth::user();
-        $cetakPertanggal = $user->pull->whereBetween('date_pull', [$tglawal, $tglakhir]);
-        $pdf = \PDF::loadView('user.pdfPenarikan', compact('cetakPertanggal'));
-        return $pdf->download('data Penarikan.pdf');
+    public function cetakPertanggalPenarikan(Request $request){
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
+        if($tglawal && $tglakhir){
+            $user = Auth::user();
+            $cetakPertanggal = $user->pull->whereBetween('date_pull', [$tglawal, $tglakhir]);
+            $pdf = \PDF::loadView('user.pdfPenarikan', compact('cetakPertanggal'));
+            return $pdf->download('data Penarikan.pdf');
+        }else{
+            return redirect()->route('user.pdfFormPenarikan')->with('failed', 'Harap isi tanggal');
+        }
     }
 
     public function pdfForm(){
         return view('user.pdf-form');
     }
 
-    public function cetakPertanggal($tglawal, $tglakhir){
-        $user = Auth::user();
-        $cetakPertanggal = $user->transactions->whereBetween('date_transaction', [$tglawal, $tglakhir]);
-        $pdf = \PDF::loadView('user.pdf', compact('cetakPertanggal'));
-        return $pdf->download('data transaction.pdf');
+    public function cetakPertanggal(Request $request){
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
+        if($tglawal && $tglakhir){
+            $user = Auth::user();
+            $cetakPertanggal = $user->transactions->whereBetween('date_transaction', [$tglawal, $tglakhir]);
+            $pdf = \PDF::loadView('user.pdf', compact('cetakPertanggal'));
+            return $pdf->download('data transaction.pdf');
+        }else{
+            return redirect()->route('user.pdfForm')->with('failed', 'Harap isi tanggal');
+        }
     }
 
     public function penjumlah(){

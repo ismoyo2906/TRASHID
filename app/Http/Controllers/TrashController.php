@@ -127,10 +127,15 @@ class TrashController extends Controller
         return view('admin.trash.pdf-form');
     }
 
-    public function cetakPertanggal($tglawal, $tglakhir){
-        // dd('tglawal:'. $tglawal, 'tglakhir:'. $tglakhir);
-        $cetakPertanggal = Trash::with('unit')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
-        $pdf = \PDF::loadView('admin.trash.pdf', compact('cetakPertanggal'));
-        return $pdf->download('data-sampah.pdf');
+    public function cetakPertanggal(Request $request){
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
+        if($tglawal && $tglakhir){
+            $cetakPertanggal = Trash::with('unit')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
+            $pdf = \PDF::loadView('admin.trash.pdf', compact('cetakPertanggal'));
+            return $pdf->download('data-sampah.pdf');
+        }else{
+            return redirect()->route('trash.pdfForm')->with('failed', 'Harap isi tanggal');
+        }
     }
 }

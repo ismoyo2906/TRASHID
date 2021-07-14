@@ -10,18 +10,30 @@
             position: relative;
             border: 1px solid #543535
         }
+        td{
+            height: 50px;
+            text-align: center;
+        }
+        .image{
+            max-width: 150px;
+            float: left;
+            margin-top: -20px;
+        }
+        .text{
+            float: left;
+            margin-left: 70px;
+        }
     </style>
 </head>
 <body>
-            
-     {{-- <img src="{{ asset('assets/img/bankmelati.png')}}" style="width: 60px; height:auto; position: absolute;" alt=""> --}}
 
      <table style="width: 100%;">
         <tr>
             <td align="center">
-                <span style="line-height:1.6; font-wight:bold">
-                  BANK SAMPAH MELATI BERSIH INDONESIA<br>
-                    Tangerang selatan pamulang no 12
+                <img class="image" src="{{ public_path('Cprofile/img/logo5.png')}}" alt="">
+                <span style="line-height:1.6; font-wight:bold" class="text">
+                  BANK SAMPAH TRASH INDONESIA<br>
+                   <b>DATA TRANSAKSI</b>
                 </span>
             </td>
         </tr>
@@ -41,7 +53,7 @@
             </tr>
             @foreach ($cetakPertanggal as $key => $c)
                 <tr>
-                    <td>{{$key+1}}</td>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$c->kd_transaction}}</td>
                     <td>{{$c->user->name }}</td>
                     <td>{{ number_format($c->amount_transaction,1)}} {{ $c->trash->unit->unit_name }}</td>

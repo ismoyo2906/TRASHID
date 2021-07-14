@@ -186,10 +186,14 @@ class TransactionController extends Controller
         return view('admin.transaction.pdf-form');
     }
 
-    public function cetakPertanggal($tglawal, $tglakhir){
-        $cetakPertanggal = Transaction::with(['trash', 'admin', 'user'])->get()->whereBetween('date_transaction', [$tglawal, $tglakhir]);
-        $pdf = \PDF::loadView('admin.transaction.pdf', compact('cetakPertanggal'));
-        return $pdf->download('data-Transaksi.pdf');
+    public function cetakPertanggal(Request $request){
+        if($request->tglawal && $request->tglakhir){
+            $cetakPertanggal = Transaction::with(['trash', 'admin', 'user'])->get()->whereBetween('date_transaction', [$request->tglawal, $request->tglakhir]);
+            $pdf = \PDF::loadView('admin.transaction.pdf', compact('cetakPertanggal'));
+            return $pdf->download('data-Transaksi.pdf');
+        }else{
+            return redirect()->route('transaction.pdfForm')->with('failed', 'Harap isi tanggal');
+        }
     }
 
 }

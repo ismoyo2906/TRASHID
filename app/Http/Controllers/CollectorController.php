@@ -136,9 +136,15 @@ class CollectorController extends Controller
         return view('admin.collector.pdf-form');
     }
 
-    public function cetakPertanggal($tglawal, $tglakhir){
-        $cetakPertanggal = Collector::with('sell')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
-        $pdf = \PDF::loadView('admin.collector.pdf', compact('cetakPertanggal'));
-        return $pdf->download('data-pengepul.pdf');
+    public function cetakPertanggal(Request $request){
+        $tglawal = $request->tglawal;
+        $tglakhir = $request->tglakhir;
+        if($tglawal && $tglakhir){
+            $cetakPertanggal = Collector::with('sell')->whereBetween('created_at', [$tglawal, $tglakhir])->latest()->get();
+            $pdf = \PDF::loadView('admin.collector.pdf', compact('cetakPertanggal'));
+            return $pdf->download('data-pengepul.pdf');
+        }else{
+            return redirect()->route('collector.pdfForm')->with('failed', 'Harap isi tanggal');
+        }
     }
 }
