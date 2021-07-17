@@ -110,7 +110,7 @@
 
         <header class="section-header">
           <!-- <h2>Services</h2> -->
-          <p>Mengapa Harus mengguanakn Trash.id ?</p>
+          <p>Mengapa Harus menggunakan Trash.id ?</p>
         </header>
 
         <div class="row gy-4">

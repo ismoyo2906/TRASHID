@@ -14,7 +14,7 @@ class CreatePullsTable extends Migration
     public function up()
     {
         Schema::create('pulls', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_pull');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->bigInteger('amount_pull');

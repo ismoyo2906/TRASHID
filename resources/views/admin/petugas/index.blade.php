@@ -1,6 +1,6 @@
 @extends('admin.Tadmin.master')
 
-@section('tittle', 'Data Sampah' )
+@section('tittle', 'Data Petugas' )
 @push('stylesheet')
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css')}}">
 @endpush

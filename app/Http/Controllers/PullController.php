@@ -80,7 +80,7 @@ class PullController extends Controller
     }
 
     public function active($id){
-        Pull::where('id', $id)->update([
+        Pull::where('id_pull', $id)->update([
             'pencairan' => true
         ]);
         return redirect()->back();
